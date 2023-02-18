@@ -12,41 +12,42 @@ import {
   import { useEffect, useState } from "react";
   import { useNavigate } from "react-router-dom";
   
-  const UserWidget = ({ userId, picturePath }) => {
-    const [user, setUser] = useState(null);
+  // const UserWidget = ({ userId, picturePath }) => {
+  const UserWidget = ({  }) => {
+    // const [user, setUser] = useState(null);
     const { palette } = useTheme();
     const navigate = useNavigate();
-    const token = useSelector((state) => state.token);
+    // const token = useSelector((state) => state.token);
     const dark = palette.neutral.dark;
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
   
-    const getUser = async () => {
-      const response = await fetch(`http://localhost:3001/users/${userId}`, {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = await response.json();
-      setUser(data);
-    };
+    // const getUser = async () => {
+    //   const response = await fetch(`http://localhost:3001/users/${userId}`, {
+    //     method: "GET",
+    //     headers: { Authorization: `Bearer ${token}` },
+    //   });
+    //   const data = await response.json();
+    //   setUser(data);
+    // };
   
-    useEffect(() => {
-      getUser();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    // useEffect(() => {
+    //   getUser();
+    // }, []); // eslint-disable-line react-hooks/exhaustive-deps
   
-    if (!user) {
-      return null;
-    }
+    // if (!user) {
+    //   return null;
+    // }
   
-    const {
-      firstName,
-      lastName,
-      location,
-      occupation,
-      viewedProfile,
-      impressions,
-      friends,
-    } = user;
+    // const {
+    //   firstName,
+    //   lastName,
+    //   location,
+    //   occupation,
+    //   viewedProfile,
+    //   impressions,
+    //   friends,
+    // } = user;
   
     return (
       <WidgetWrapper>
@@ -54,10 +55,12 @@ import {
         <FlexBetween
           gap="0.5rem"
           pb="1.1rem"
-          onClick={() => navigate(`/profile/${userId}`)}
+          // onClick={() => navigate(`/profile/${userId}`)}
+          onClick={() =>  {}}
         >
           <FlexBetween gap="1rem">
-            <UserImage image={picturePath} />
+            {/* <UserImage image={picturePath} /> */}
+            <UserImage alt={"my imgae here"} />
             <Box>
               <Typography
                 variant="h4"
@@ -70,9 +73,11 @@ import {
                   },
                 }}
               >
-                {firstName} {lastName}
+                {/* {firstName} {lastName} */}
+                Jefry Palomino
               </Typography>
-              <Typography color={medium}>{friends.length} friends</Typography>
+              {/* <Typography color={medium}>{friends.length} friends</Typography> */}
+              <Typography color={medium}>my friends, friends</Typography>
             </Box>
           </FlexBetween>
           <ManageAccountsOutlined />
@@ -84,11 +89,13 @@ import {
         <Box p="1rem 0">
           <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
             <LocationOnOutlined fontSize="large" sx={{ color: main }} />
-            <Typography color={medium}>{location}</Typography>
+            {/* <Typography color={medium}>{location}</Typography> */}
+            <Typography color={medium}>Peru</Typography>
           </Box>
           <Box display="flex" alignItems="center" gap="1rem">
             <WorkOutlineOutlined fontSize="large" sx={{ color: main }} />
-            <Typography color={medium}>{occupation}</Typography>
+            {/* <Typography color={medium}>{occupation}</Typography> */}
+            <Typography color={medium}>fullStack Developer</Typography>
           </Box>
         </Box>
   
@@ -99,13 +106,15 @@ import {
           <FlexBetween mb="0.5rem">
             <Typography color={medium}>Who's viewed your profile</Typography>
             <Typography color={main} fontWeight="500">
-              {viewedProfile}
+              Rosi
+              {/* {viewedProfile} */}
             </Typography>
           </FlexBetween>
           <FlexBetween>
             <Typography color={medium}>Impressions of your post</Typography>
             <Typography color={main} fontWeight="500">
-              {impressions}
+              {/* {impressions} */}
+              its amazing
             </Typography>
           </FlexBetween>
         </Box>
@@ -123,7 +132,7 @@ import {
               <img src="../assets/twitter.png" alt="twitter" />
               <Box>
                 <Typography color={main} fontWeight="500">
-                  Twitter
+                  JefryBook
                 </Typography>
                 <Typography color={medium}>Social Network</Typography>
               </Box>

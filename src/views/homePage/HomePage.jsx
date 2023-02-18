@@ -3,12 +3,12 @@
 import { Box, useMediaQuery } from "@mui/material"
 import PostsWidget from "../../views/widgets/PostsWidget";
 import MyPostWidget from "../../views/widgets/MyPostWidget";
-import UserWidget from "../../views/widgets/UserWidget";
 // import Navbar from "views/navbar/Navbar"
 import Navbar from "../navbar/Navbar"
 import AdvertWidget from "../../views/widgets/AdvertWidget";
 import FriendListWidget from "../../views/widgets/FriendsListWidget";
 import { useSelector } from "react-redux";
+import UserWidget from "../widgets/UserWidget";
 
  
 
@@ -28,22 +28,24 @@ const HomePage = () => {
       >
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
           {/* <UserWidget userId={_id} picturePath={picturePath} /> */}
-          {/* <UserWidget   /> */}
+          <UserWidget/>
         </Box>
         <Box
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
-          {/* <MyPostWidget  /> */}
+          <MyPostWidget  />
           {/* <MyPostWidget picturePath={picturePath} /> */}
           {/* <PostsWidget userId={_id} /> */}
-          {/* <PostsWidget /> */}
+          <PostsWidget />
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">
             {/* <AdvertWidget /> */}
+            <AdvertWidget />
             <Box m="2rem 0" />
             {/* <FriendListWidget userId={_id} /> */}
+            <FriendListWidget />
           </Box>
         )}
       </Box>

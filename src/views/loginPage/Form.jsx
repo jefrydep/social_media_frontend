@@ -12,10 +12,9 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-// import { setLogin } from "../../storeState/auth/authSlice";
 import Dropzone from "react-dropzone";
 import FlexBetween from "../../components/FlexBetween";
-import { useAuthStore } from "hooks/useAuthStore";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -48,8 +47,9 @@ const initialValuesLogin = {
 };
 
 const Form = () => {
+  // const isRegister = true;
   // const [pageType, setPageType] = useState("login");
-  const {user,isLogin,isRegister,startLogin}=useAuthStore()
+  const {startRegister,setPageType,isLogin,isRegister,startLogin}=useAuthStore()
   
   const { palette } = useTheme();
   // const dispatch = useDispatch();
@@ -100,17 +100,24 @@ const Form = () => {
   //   }
   // };
 
-  const handleFormSubmit =  (values, onSubmitProps) => {
+  // const handleFormSubmit =  ({email,password}, onSubmitProps) => {
+  // const handleFormSubmit =  ({email,password,userName,lastName,location,ocupation,}) => {
+  const handleFormSubmit =  (values) => {
     // if (isLogin) await login(values, onSubmitProps);
-    if (isLogin)  startLogin(values, onSubmitProps);
-    // if (isRegister) await register(values, onSubmitProps);
+    // console.log({email,password})
+    // if (isLogin)  startLogin({email:email,password:password}, onSubmitProps);
+    // if (isLogin)  startLogin({email:email,password:password});
+    if(isLogin)startLogin(values)
+    // if (isRegister) startRegister({email:email,password:password,lastName:lastName,location:location,ocupation:ocupation,userName:userName});
+
+    if (isRegister) startRegister(values);
   };
 
   return (
     <Formik
       onSubmit={handleFormSubmit}
-      // initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
-      // validationSchema={isLogin ? loginSchema : registerSchema}
+      initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
+      validationSchema={isLogin ? loginSchema : registerSchema}
     >
       {({
         values,
@@ -249,11 +256,11 @@ const Form = () => {
                 "&:hover": { color: palette.primary.main },
               }}
             >
-              {/* {isLogin ? "LOGIN" : "REGISTER"} */}
+              {isLogin ? "LOGIN" : "REGISTER"}
             </Button>
             <Typography
               onClick={() => {
-                // setPageType(isLogin ? "register" : "login");
+                setPageType(isLogin ? "register" : "login");
                 resetForm();
               }}
               sx={{
@@ -265,9 +272,9 @@ const Form = () => {
                 },
               }}
             >
-              {/* {isLogin
+              {isLogin
                 ? "Don't have an account? Sign Up here."
-                : "Already have an account? Login here."} */}
+                : "Already have an account? Login here."}
             </Typography>
           </Box>
         </form>

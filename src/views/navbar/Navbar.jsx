@@ -4,14 +4,17 @@ import FlexBetween from '../../components/FlexBetween';
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../../hooks/useAuthStore';
 // import {setMode,setLogout}from "../../storeState/auth/authSlice"
  
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.auth);
-  console.log('hola',user)
+  // const user = useSelector((state) => state.auth);
+  // console.log(user)
+  const user =useAuthStore();
+  console.log(user)
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
   const theme = useTheme();

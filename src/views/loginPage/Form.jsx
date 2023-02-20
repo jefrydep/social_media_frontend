@@ -49,10 +49,10 @@ const initialValuesLogin = {
 const Form = () => {
   // const isRegister = true;
   // const [pageType, setPageType] = useState("login");
-  const {startRegister,setPageType,isLogin,isRegister,startLogin}=useAuthStore()
+  const {isLogin,isRegister,setPageType,startRegister,startLogin}=useAuthStore()
   
   const { palette } = useTheme();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
   // const isLogin = pageType === "login";
@@ -100,17 +100,19 @@ const Form = () => {
   //   }
   // };
 
-  // const handleFormSubmit =  ({email,password}, onSubmitProps) => {
+  const handleFormSubmit =   (values, onSubmitProps) => {
   // const handleFormSubmit =  ({email,password,userName,lastName,location,ocupation,}) => {
-  const handleFormSubmit =  (values) => {
+  // const handleFormSubmit =  (values) => {
     // if (isLogin) await login(values, onSubmitProps);
     // console.log({email,password})
     // if (isLogin)  startLogin({email:email,password:password}, onSubmitProps);
     // if (isLogin)  startLogin({email:email,password:password});
-    if(isLogin)startLogin(values)
+    if(isLogin)  startLogin(values,onSubmitProps)
     // if (isRegister) startRegister({email:email,password:password,lastName:lastName,location:location,ocupation:ocupation,userName:userName});
-
-    if (isRegister) startRegister(values);
+    // console.log(onSubmitProps)
+    if (isRegister)   startRegister(values,onSubmitProps);
+    setPageType('login')
+    onSubmitProps.resetForm;
   };
 
   return (
@@ -261,6 +263,7 @@ const Form = () => {
             <Typography
               onClick={() => {
                 setPageType(isLogin ? "register" : "login");
+                console.log('hola')
                 resetForm();
               }}
               sx={{

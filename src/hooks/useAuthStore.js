@@ -21,6 +21,7 @@ export const useAuthStore = () => {
 
   // const { status, user, errorMessage } = useSelector( state => state.auth );
   const user = useSelector((state) => state.auth);
+  console.log(user)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,9 +29,9 @@ export const useAuthStore = () => {
   const startLogin = async (values) => {
     try {
       // const {data} = await socialMediaApi.post("/auth", { email, password });
-      const {data} = await socialMediaApi.post("/auth", {values});
-      console.log(data.user)
-      console.log(data.token)
+      const {data} = await socialMediaApi.post("/auth", values);
+      // console.log(data.user)
+      // console.log(data.token)
 
       dispatch(
         setLogin({
@@ -38,9 +39,9 @@ export const useAuthStore = () => {
           token: data.token,
         })
       );
-      if (data.user) {
-        setPageType("login");
-      }
+      // if (data.user) {
+      //   setPageType("login");
+      // }
       navigate("/home");
     } catch (error) {
       console.log('mi error',error);
@@ -48,11 +49,13 @@ export const useAuthStore = () => {
   };
 
   // const startRegister = async({ userName, lastName, location,ocupation,email,password }) => {
-  const startRegister = async(values) => {
+  const startRegister = async(values,onSubmitProps) => {
       try {
           // const  resp = await socialMediaApi.post('/auth/register',{userName,lastName,location,ocupation,email,password});
-          const  resp = await socialMediaApi.post('/auth/register',values);
-          console.log(resp)
+          const   {config} = await socialMediaApi.post('/auth/register',values);
+          console.log(config.data)
+       
+         
           
           // // localStorage.setItem('token', data.token );
           // localStorage.setItem('token-init-date', new Date().getTime() );

@@ -5,16 +5,17 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../hooks/useAuthStore';
+import { setLogout, setMode } from '../../state/';
 // import {setMode,setLogout}from "../../storeState/auth/authSlice"
  
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const user = useSelector((state) => state.auth);
-  // console.log(user)
-  const user =useAuthStore();
+  const user = useSelector((state) => state.user);
   console.log(user)
+  // const  data =useAuthStore()
+  // console.log(data)
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
   const theme = useTheme();
@@ -23,8 +24,8 @@ const Navbar = () => {
   const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
-  // const fullName = `${user.firstName}${user.lastName}`;
-  const fullName = 'jeFry Palomno'
+  const fullName = `${user.firstName}${user.lastName}`;
+  // const fullName = 'jeFry Palomno'
   // const fullName = `${user}${user}`;
 
 
@@ -88,7 +89,7 @@ const Navbar = () => {
               value={fullName}
               sx={{
                 backgroundColor: neutralLight,
-                width: "150px",
+                width: "220px",
                 borderRadius: "0.25rem",
                 p: "0.25rem 1rem",
                 "& .MuiSvgIcon-root": {
@@ -101,8 +102,8 @@ const Navbar = () => {
               }}
               input={<InputBase />}
             >
-              <MenuItem value={fullName}>
-                <Typography>{fullName}</Typography>
+              <MenuItem sx={{}}  value={fullName}>
+                <Typography sx={{}} >{fullName}</Typography>
               </MenuItem>
               <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
             </Select>

@@ -18,6 +18,7 @@ import {
     const { palette } = useTheme();
     const navigate = useNavigate();
     // const token = useSelector((state) => state.token);
+    const user = useSelector((state)=> state.user)
     const dark = palette.neutral.dark;
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
@@ -39,15 +40,15 @@ import {
     //   return null;
     // }
   
-    // const {
-    //   firstName,
-    //   lastName,
-    //   location,
-    //   occupation,
-    //   viewedProfile,
-    //   impressions,
-    //   friends,
-    // } = user;
+    const {
+      firstName,
+      lastName,
+      location,
+      occupation,
+      // viewedProfile,
+      // impressions,
+      // friends,
+    } = user;
   
     return (
       <WidgetWrapper>
@@ -73,8 +74,8 @@ import {
                   },
                 }}
               >
-                {/* {firstName} {lastName} */}
-                Jefry Palomino
+                {firstName} {lastName}
+                {/* Jefry Palomino */}
               </Typography>
               {/* <Typography color={medium}>{friends.length} friends</Typography> */}
               <Typography color={medium}>my friends, friends</Typography>
@@ -89,13 +90,13 @@ import {
         <Box p="1rem 0">
           <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
             <LocationOnOutlined fontSize="large" sx={{ color: main }} />
-            {/* <Typography color={medium}>{location}</Typography> */}
-            <Typography color={medium}>Peru</Typography>
+            <Typography color={medium}>{location}</Typography>
+            {/* <Typography color={medium}>Peru</Typography> */}
           </Box>
           <Box display="flex" alignItems="center" gap="1rem">
             <WorkOutlineOutlined fontSize="large" sx={{ color: main }} />
-            {/* <Typography color={medium}>{occupation}</Typography> */}
-            <Typography color={medium}>fullStack Developer</Typography>
+            <Typography color={medium}>{occupation}</Typography>
+            {/* <Typography color={medium}>fullStack Developer</Typography> */}
           </Box>
         </Box>
   

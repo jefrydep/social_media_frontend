@@ -23,7 +23,7 @@ import {
   import WidgetWrapper from "../../components/WidgetWrapper";
   import { useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
-import {setPost} from "../../storeState/auth/authSlice";
+// import {setPost} from "../../storeState/auth/authSlice";
 //   import { setPosts } from "state";
   
   const MyPostWidget = ({ picturePath }) => {
@@ -33,7 +33,7 @@ import {setPost} from "../../storeState/auth/authSlice";
     const [post, setPost] = useState("");
     const { palette } = useTheme();
     // const { _id } = useSelector((state) => state.user);
-    const token = useSelector((state) => state.token);
+    // const token = useSelector((state) => state.token);
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
     const mediumMain = palette.neutral.mediumMain;
     const medium = palette.neutral.medium;

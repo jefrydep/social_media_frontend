@@ -4,7 +4,7 @@ import FlexBetween from '../../components/FlexBetween';
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import {setMode,setLogout}from "../../storeState/auth/authSlice"
+// import {setMode,setLogout}from "../../storeState/auth/authSlice"
  
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false)

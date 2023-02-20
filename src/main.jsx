@@ -8,12 +8,13 @@ import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
-import authReducer from "./storeState/auth/authSlice"
+// import authReducer, { authSlice } from "./state/index"
+import authSlice from "./state"
 
 import App from './App'
 import './index.css'
 const persistConfig = { key: "root", storage, version: 1 };
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedReducer = persistReducer(persistConfig,authSlice );
 const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>

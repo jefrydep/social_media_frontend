@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 // import { setLogin } from "../../storeState/auth/authSlice";
 import Dropzone from "react-dropzone";
 import FlexBetween from "../../components/FlexBetween";
+import { useAuthStore } from "hooks/useAuthStore";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -47,13 +48,15 @@ const initialValuesLogin = {
 };
 
 const Form = () => {
-  const [pageType, setPageType] = useState("login");
+  // const [pageType, setPageType] = useState("login");
+  const {user,isLogin,isRegister,startLogin}=useAuthStore()
+  
   const { palette } = useTheme();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  const isLogin = pageType === "login";
-  const isRegister = pageType === "register";
+  // const isLogin = pageType === "login";
+  // const isRegister = pageType === "register";
 
   // const register = async (values, onSubmitProps) => {
   //   // this allows us to send form info with image
@@ -97,8 +100,9 @@ const Form = () => {
   //   }
   // };
 
-  const handleFormSubmit = async (values, onSubmitProps) => {
+  const handleFormSubmit =  (values, onSubmitProps) => {
     // if (isLogin) await login(values, onSubmitProps);
+    if (isLogin)  startLogin(values, onSubmitProps);
     // if (isRegister) await register(values, onSubmitProps);
   };
 

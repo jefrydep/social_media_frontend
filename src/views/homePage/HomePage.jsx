@@ -13,7 +13,7 @@ import UserWidget from "../widgets/UserWidget";
  
 
 const HomePage = () => {
-
+const picturePath = 'picture path adress'
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   // const { _id, picturePath } = useSelector((state) => state.user);
   return (
@@ -34,8 +34,8 @@ const HomePage = () => {
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
-          <MyPostWidget  />
-          {/* <MyPostWidget picturePath={picturePath} /> */}
+          {/* <MyPostWidget  /> */}
+          <MyPostWidget picturePath={picturePath} />
           {/* <PostsWidget userId={_id} /> */}
           <PostsWidget />
         </Box>

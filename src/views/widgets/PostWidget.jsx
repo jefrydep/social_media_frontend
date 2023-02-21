@@ -12,28 +12,29 @@ import {
   import { useDispatch, useSelector } from "react-redux";
   // import { setPost } from "../../storeState/auth/authSlice";
   
-  // const PostWidget = ({
-  //   postId,
-  //   postUserId,
-  //   name,
-  //   description,
-  //   location,
-  //   picturePath,
-  //   userPicturePath,
-  //   likes,
-  //   comments,
-  // }) => {
-  
   const PostWidget = ({
-    
+    postId,
+    postUserId,
+    name,
+    description,
+    location,
+    picturePath,
+    userPicturePath,
+    likes,
+    comments,
   }) => {
-    // const [isComments, setIsComments] = useState(false);
+  
+    
+  // const PostWidget = ({
+    
+  // }) => {
+    const [isComments, setIsComments] = useState(false);
     // const dispatch = useDispatch();
     // const token = useSelector((state) => state.token);
     // const loggedInUserId = useSelector((state) => state.user._id);
     // const isLiked = Boolean(likes[loggedInUserId]);
     // const likeCount = Object.keys(likes).length;
-  
+    let isLiked=true
     const { palette } = useTheme();
     const main = palette.neutral.main;
     const primary = palette.primary.main;
@@ -74,14 +75,16 @@ import {
         <FlexBetween mt="0.25rem">
           <FlexBetween gap="1rem">
             <FlexBetween gap="0.3rem">
-              <IconButton onClick={patchLike}>
+              {/* <IconButton onClick={patchLike}> */}
+              <IconButton >
                 {isLiked ? (
                   <FavoriteOutlined sx={{ color: primary }} />
                 ) : (
                   <FavoriteBorderOutlined />
                 )}
               </IconButton>
-              <Typography>{likeCount}</Typography>
+              <Typography>12</Typography>
+              {/* <Typography>{likeCount}</Typography> */}
             </FlexBetween>
   
             <FlexBetween gap="0.3rem">

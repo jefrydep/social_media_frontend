@@ -24,9 +24,23 @@ import {
   import { useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
 // import {setPost} from "../../storeState/auth/authSlice";
-//   import { setPosts } from "state";
+  import { setPosts } from "../../state/";
   
   const MyPostWidget = ({ picturePath }) => {
+    // let posts=  {
+    //   _id: 1,
+    //   userId: 1,
+    //   firstName: "Jefry",
+    //   lastName: "padlomino",
+    //   description: "this is my real post esto es un comentario completo para realizar mis comentarios ",
+    //   location: "Punod",
+    //   piscturePath: "direcicon",
+    //   userPicturePath: "this is thed",
+    //   likes: 23,
+    //   comments: [
+    //     'interessante descriptions','tareas fastidiosas','donee estara el amor','puede que se aya ido','serio no mames ','nojodas','jisus crise','lol','amzin','dit',
+    //   ]
+    // },
     const dispatch = useDispatch();
     const [isImage, setIsImage] = useState(false);
     const [image, setImage] = useState(null);
@@ -39,22 +53,24 @@ import {
     const medium = palette.neutral.medium;
   
     const handlePost = async () => {
+     
       const formData = new FormData();
-    //   formData.append("userId", _id);
+      // formData.append("userId", _id);
       formData.append("userId");
       formData.append("description", post);
       if (image) {
         formData.append("picture", image);
         formData.append("picturePath", image.name);
       }
+     
   
-      const response = await fetch(`http://localhost:3001/posts`, {
-        method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
-        body: formData,
-      });
-      const posts = await response.json();
-      dispatch(setPosts({ posts }));
+      // const response = await fetch(`http://localhost:3001/posts`, {
+      //   method: "POST",
+      //   headers: { Authorization: `Bearer ${token}` },
+      //   body: formData,
+      // });
+      // const posts = await response.json();
+      dispatch(setPosts({posts} ));
       setImage(null);
       setPost("");
     };

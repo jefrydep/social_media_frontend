@@ -5,9 +5,40 @@ import { useDispatch, useSelector } from "react-redux";
 import PostWidget from "./PostWidget";
 
 // const PostsWidget = ({ userId, isProfile = false }) => {
-const PostsWidget = ({ }) => {
+const PostsWidget = ({}) => {
   // const dispatch = useDispatch();
-  const posts = useSelector((state) => state.posts);
+  // const posts = useSelector((state) => state.posts);
+  const posts = [
+    {
+      _id: 1,
+      userId: 1,
+      firstName: "Jefry",
+      lastName: "padlomino",
+      description: "this is my real post esto es un comentario completo para realizar mis comentarios ",
+      location: "Punod",
+      piscturePath: "direcicon",
+      userPicturePath: "this is thed",
+      likes: 23,
+      comments: [
+        'interessante descriptions','tareas fastidiosas','donee estara el amor','puede que se aya ido','serio no mames ','nojodas','jisus crise','lol','amzin','dit',
+      ]
+    },
+    {
+      _id: 2,
+      userId: 2,
+      firstName: "CArlos",
+      lastName: "padlomino",
+      description: "un dia encanctador para realizar ejercicios ir ala piscina ir a jugar futbol",
+      location: "Lima",
+      piscturePath: "direcicon",
+      userPicturePath: "this is thed",
+      likes: 15,
+      comments: [
+        'interessante descriptions','tareas fastidiosas','donee estara el amor','puede que se aya ido','serio no mames ','nojodas','jisus crise','lol','amzin','dit',
+      ]
+    },
+  ];
+  console.log(posts);
   // const token = useSelector((state) => state.token);
 
   // const getPosts = async () => {
@@ -41,7 +72,7 @@ const PostsWidget = ({ }) => {
 
   return (
     <>
-      {/* {posts.map(
+      {posts.map(
         ({
           _id,
           userId,
@@ -67,7 +98,7 @@ const PostsWidget = ({ }) => {
             comments={comments}
           />
         )
-      )} */}
+      )}
     </>
   );
 };

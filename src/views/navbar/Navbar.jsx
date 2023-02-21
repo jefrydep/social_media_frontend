@@ -50,7 +50,8 @@ const Navbar = () => {
             }
           }
         >
-          LiveBook
+          {/* {LiveBook} */}
+          {user.firstName}Book
 
         </Typography>
         {

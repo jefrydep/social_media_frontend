@@ -23,7 +23,7 @@ const registerSchema = yup.object().shape({
   password: yup.string().required("required"),
   location: yup.string().required("required"),
   occupation: yup.string().required("required"),
-  picture: yup.string().required("required"),
+  picture: yup.string().optional()
 });
 
 const loginSchema = yup.object().shape({
@@ -103,10 +103,10 @@ const Form = () => {
   const handleFormSubmit =   (values, onSubmitProps) => {
   // const handleFormSubmit =  ({email,password,userName,lastName,location,ocupation,}) => {
   // const handleFormSubmit =  (values) => {
-    // if (isLogin) await login(values, onSubmitProps);
-    // console.log({email,password})
-    // if (isLogin)  startLogin({email:email,password:password}, onSubmitProps);
-    // if (isLogin)  startLogin({email:email,password:password});
+  //   if (isLogin) await login(values, onSubmitProps);
+  //   console.log({email,password})
+  //   if (isLogin)  startLogin({email:email,password:password}, onSubmitProps);
+  //   if (isLogin)  startLogin({email:email,password:password});
     if(isLogin)  startLogin(values,onSubmitProps)
     // if (isRegister) startRegister({email:email,password:password,lastName:lastName,location:location,ocupation:ocupation,userName:userName});
     // console.log(onSubmitProps)

@@ -57,7 +57,7 @@ import {
           gap="0.5rem"
           pb="1.1rem"
           // onClick={() => navigate(`/profile/${userId}`)}
-          onClick={() =>  {}}
+          onClick={() => navigate(`/profile/2`)}
         >
           <FlexBetween gap="1rem">
             {/* <UserImage image={picturePath} /> */}
@@ -130,10 +130,10 @@ import {
   
           <FlexBetween gap="1rem" mb="0.5rem">
             <FlexBetween gap="1rem">
-              <img src="../assets/twitter.png" alt="twitter" />
+              <img src="../../assets/" alt="twitter" />
               <Box>
                 <Typography color={main} fontWeight="500">
-                  JefryBook
+                  Jefry
                 </Typography>
                 <Typography color={medium}>Social Network</Typography>
               </Box>
@@ -143,7 +143,7 @@ import {
   
           <FlexBetween gap="1rem">
             <FlexBetween gap="1rem">
-              <img src="../assets/linkedin.png" alt="linkedin" />
+              <img width={'150px'} src="https://i.ytimg.com/vi/_Lkvlihyr28/maxresdefault.jpg" alt="linkedin" />
               <Box>
                 <Typography color={main} fontWeight="500">
                   Linkedin

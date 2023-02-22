@@ -12,8 +12,8 @@ import {
   import { useEffect, useState } from "react";
   import { useNavigate } from "react-router-dom";
   
-  // const UserWidget = ({ userId, picturePath }) => {
-  const UserWidget = ({  }) => {
+  const UserWidget = ({ userId, picturePath }) => {
+  // const UserWidget = ({  }) => {
     // const [user, setUser] = useState(null);
     const { palette } = useTheme();
     const navigate = useNavigate();
@@ -56,8 +56,8 @@ import {
         <FlexBetween
           gap="0.5rem"
           pb="1.1rem"
-          // onClick={() => navigate(`/profile/${userId}`)}
-          onClick={() => navigate(`/profile/2`)}
+          onClick={() => navigate(`/profile/${userId}`)}
+          // onClick={() => navigate(`/profile/2`)}
         >
           <FlexBetween gap="1rem">
             {/* <UserImage image={picturePath} /> */}
@@ -115,7 +115,7 @@ import {
             <Typography color={medium}>Impressions of your post</Typography>
             <Typography color={main} fontWeight="500">
               {/* {impressions} */}
-              its amazing
+              I love yuo beatufull man
             </Typography>
           </FlexBetween>
         </Box>

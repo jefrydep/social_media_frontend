@@ -12,13 +12,13 @@ import {
   import { useEffect, useState } from "react";
   import { useNavigate } from "react-router-dom";
   
-  // const UserWidget = ({ userId, picturePath }) => {
-  const UserWidget = ({  }) => {
-    // const [user, setUser] = useState(null);
+  const UserWidget = ({ userId, picturePath }) => {
+  // const UserWidget = ({  }) => {
+    const [user, setUser] = useState(null);
     const { palette } = useTheme();
     const navigate = useNavigate();
     // const token = useSelector((state) => state.token);
-    const user = useSelector((state)=> state.user)
+    const users = useSelector((state)=> state.user)
     const dark = palette.neutral.dark;
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
@@ -32,13 +32,22 @@ import {
     //   setUser(data);
     // };
   
-    // useEffect(() => {
-    //   getUser();
-    // }, []); // eslint-disable-line react-hooks/exhaustive-deps
   
-    // if (!user) {
-    //   return null;
-    // }
+    const getUser = async ()=> {
+      const response = await fetch(`http://localhost:8081/api/${userId}`,{
+        method:"GET"
+      })
+      const data = await response.json();
+      console.log(data)
+      setUser(data)
+    }
+    useEffect(() => {
+      getUser();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  
+    if (!user) {
+      return null;
+    }
   
     const {
       firstName,
@@ -48,7 +57,7 @@ import {
       // viewedProfile,
       // impressions,
       // friends,
-    } = user;
+    } = users;
   
     return (
       <WidgetWrapper>
@@ -56,8 +65,8 @@ import {
         <FlexBetween
           gap="0.5rem"
           pb="1.1rem"
-          // onClick={() => navigate(`/profile/${userId}`)}
-          onClick={() => navigate(`/profile/2`)}
+          onClick={() => navigate(`/profile/${userId}`)}
+          // onClick={() => navigate(`/profile/2`)}
         >
           <FlexBetween gap="1rem">
             {/* <UserImage image={picturePath} /> */}

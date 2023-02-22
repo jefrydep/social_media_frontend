@@ -13,9 +13,9 @@ import UserWidget from "../widgets/UserWidget";
  
 
 const HomePage = () => {
-const picturePath = 'picture path adress'
+// const picturePath = 'picture path adress'
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-  // const { _id, picturePath } = useSelector((state) => state.user);
+  const { userId, picturePath } = useSelector((state) => state.user);
   return (
      <Box>
       <Navbar />
@@ -27,8 +27,8 @@ const picturePath = 'picture path adress'
         justifyContent="space-between"
       >
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
-          {/* <UserWidget userId={_id} picturePath={picturePath} /> */}
-          <UserWidget/>
+          <UserWidget userId={userId} picturePath={picturePath} />
+          {/* <UserWidget/> */}
         </Box>
         <Box
           flexBasis={isNonMobileScreens ? "42%" : undefined}

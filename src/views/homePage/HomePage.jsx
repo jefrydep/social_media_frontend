@@ -16,6 +16,7 @@ const HomePage = () => {
 // const picturePath = 'picture path adress'
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const { userId, picturePath } = useSelector((state) => state.user);
+  // console.log(userId)
   return (
      <Box>
       <Navbar />
@@ -44,8 +45,8 @@ const HomePage = () => {
             {/* <AdvertWidget /> */}
             <AdvertWidget />
             <Box m="2rem 0" />
-            {/* <FriendListWidget userId={_id} /> */}
-            <FriendListWidget />
+            <FriendListWidget userId={userId} />
+            {/* <FriendListWidget /> */}
           </Box>
         )}
       </Box>

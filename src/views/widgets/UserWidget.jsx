@@ -17,8 +17,7 @@ import {
     const [user, setUser] = useState(null);
     const { palette } = useTheme();
     const navigate = useNavigate();
-    // const token = useSelector((state) => state.token);
-    const users = useSelector((state)=> state.user)
+    const token = useSelector((state) => state.token);
     const dark = palette.neutral.dark;
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
@@ -57,7 +56,7 @@ import {
       // viewedProfile,
       // impressions,
       // friends,
-    } = users;
+    } = user;
   
     return (
       <WidgetWrapper>
@@ -69,8 +68,8 @@ import {
           // onClick={() => navigate(`/profile/2`)}
         >
           <FlexBetween gap="1rem">
-            {/* <UserImage image={picturePath} /> */}
-            <UserImage alt={"my imgae here"} />
+            <UserImage image={picturePath} />
+            {/* <UserImage alt={"my imgae here"} /> */}
             <Box>
               <Typography
                 variant="h4"

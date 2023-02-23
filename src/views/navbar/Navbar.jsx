@@ -13,7 +13,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  console.log(user)
+  // console.log(user)
   // const  data =useAuthStore()
   // console.log(data)
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');

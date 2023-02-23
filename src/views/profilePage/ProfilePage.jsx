@@ -11,7 +11,7 @@ import UserWidget from "../widgets/UserWidget";
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const { userId } = useParams();
-  // const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
 
   // const getUser = async () => {
@@ -28,6 +28,21 @@ const ProfilePage = () => {
   // }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // if (!user) return null;
+  const getUser = async ()=> {
+    const response = await fetch(`http://localhost:8081/api/${userId}`,{
+      method:"GET"
+    })
+    const data = await response.json();
+    console.log(data)
+    setUser(data)
+  }
+  useEffect(() => {
+    getUser();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <Box>
@@ -41,7 +56,7 @@ const ProfilePage = () => {
       >
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
           {/* <UserWidget userId={userId} picturePath={user.picturePath} /> */}
-          <UserWidget userId={userId}  />
+          <UserWidget userId={userId}   />
           <Box m="2rem 0" />
           <FriendListWidget userId={userId} />
         </Box>

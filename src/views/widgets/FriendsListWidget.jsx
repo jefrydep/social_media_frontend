@@ -3,10 +3,10 @@ import Friend from "../../components/Friend";
 import WidgetWrapper from "../../components/WidgetWrapper";
 import { useEffect } from "react";
 import { setFriends } from "../../state";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-const FriendListWidget = ({ userId }) => {
-// const FriendListWidget = ({ }) => {
+// const FriendListWidget = ({ userId }) => {
+  const FriendListWidget = ({ }) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();
   const token = useSelector((state) => state.token);
@@ -27,19 +27,21 @@ const FriendListWidget = ({ userId }) => {
   // useEffect(() => {
   //   getFriends();
   // }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  
+
   const getFriends = async () => {
     const response = await fetch(
+      `http://localhost:8081/api/users/all`,
       // `http://localhost:8081/api/${userId}/friends`,
-      `http://localhost:8081/api/1/friends`,
       {
         method: "GET",
         // headers: { Authorization: `Bearer ${token}` },
       }
     );
     const data = await response.json();
-    console.log(data.friend)
-    dispatch(setFriends({ friends: data.friend }));
+    console.log(data)
+    console.log('hoalalkd')
+
+    dispatch(setFriends({ friends: data }));
   };
 
   useEffect(() => {
@@ -59,11 +61,11 @@ const FriendListWidget = ({ userId }) => {
       <Box display="flex" flexDirection="column" gap="1.5rem">
         {friends.map((friend) => (
           <Friend
-            key={friend.friendId}
-            friendId={friend.friendId}
+            key={friend.userId}
+            friendId={friend.userId}
             name={`${friend.firstName} ${friend.lastName}`}
             subtitle={friend.occupation}
-            userPicturePath={friend.picturePath}
+            userPicturePath={friend.profileImg}
           />
         ))}
         {/* name:jefry

@@ -17,6 +17,7 @@ const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const { userId, picturePath } = useSelector((state) => state.user);
   // console.log(userId)
+  const {userId} = useSelector((state) => state.user);
   return (
      <Box>
       <Navbar />
@@ -28,6 +29,8 @@ const HomePage = () => {
         justifyContent="space-between"
       >
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
+          <UserWidget userId={userId} picturePath={picturePath} />
+          {/* <UserWidget/> */}
           <UserWidget userId={userId} picturePath={picturePath} />
           {/* <UserWidget/> */}
         </Box>
